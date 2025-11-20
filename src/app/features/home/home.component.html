@@ -4,11 +4,15 @@
       <div class="hero-slide">
         <!-- Using a div with background image for now as Swiper slides often work better that way for full cover,
              but ideally we use NgOptimizedImage. Since NgOptimizedImage is for <img> tags, let's try to use it inside. -->
-        <img ngSrc="assets/images/hero-saona.jpg" alt="Saona Island" fill priority class="hero-bg">
+        <!-- <img ngSrc="assets/images/hero-saona.jpg" alt="Saona Island" fill priority class="hero-bg"> -->
+        <video class="hero-bg" src="../../../assets/videos/video_de_playa.mp4" autoplay loop muted playsinline></video>
+
         <div class="hero-content container">
           <h1>{{ 'HOME.HERO_TITLE' | translate }}</h1>
           <p>{{ 'HOME.HERO_SUBTITLE' | translate }}</p>
-          <button class="btn btn-tropical" routerLink="/excursions">{{ 'HOME.CTA_BOOK' | translate }}</button>
+          <button class="btn btn-tropical" routerLink="/excursions">
+            {{ 'HOME.CTA_BOOK' | translate }}
+          </button>
         </div>
       </div>
     </swiper-slide>
@@ -24,7 +28,7 @@
 
   <div class="grid">
     @for (excursion of excursions$ | async; track excursion.id) {
-      <app-excursion-card [excursion]="excursion"></app-excursion-card>
+    <app-excursion-card [excursion]="excursion"></app-excursion-card>
     }
   </div>
 
