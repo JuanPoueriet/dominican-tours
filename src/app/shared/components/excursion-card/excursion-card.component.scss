@@ -1,116 +1,68 @@
-// CORRECCIÓN: Ruta relativa profunda
-@use '../../../../styles/variables/index' as vars;
-@use '../../../../styles/mixins/index' as mixins;
+@use '../../../../styles/variables' as *;
+
+:host {
+  display: block;
+  height: 100%;
+}
 
 .card {
-  background: vars.$color-bg-white;
-  border-radius: 16px;
-  overflow: hidden;
-  @include mixins.card-shadow;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  position: relative;
+  @apply bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col h-full relative;
 }
 
 .card-image {
-  position: relative;
-  height: 200px;
-  background-color: #eee;
-  overflow: hidden;
+  @apply relative h-56 bg-gray-100 overflow-hidden;
 
   img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s ease;
+    @apply object-cover w-full h-full transition-transform duration-500;
   }
 
   &:hover img {
-    transform: scale(1.05);
+    @apply scale-105;
   }
 }
 
 .badge-category {
-  position: absolute;
-  top: vars.$spacing-sm;
-  right: vars.$spacing-sm;
-  background: rgba(255,255,255,0.9);
-  color: vars.$color-primary;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: vars.$font-size-xs;
-  font-weight: vars.$font-weight-bold;
-  text-transform: uppercase;
-  z-index: 1; 
+  @apply absolute top-3 right-3 bg-white/90 text-cyan-600 px-3 py-1 rounded-full text-xs font-bold uppercase z-10 shadow-sm;
 }
 
 .card-content {
-  padding: vars.$spacing-lg;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  @apply p-5 flex-grow flex flex-col;
 }
 
 .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: vars.$spacing-sm;
+  @apply flex justify-between items-start mb-2;
 
   h3 {
-    font-size: vars.$font-size-lg;
-    margin-bottom: 0;
-    line-height: 1.3;
-    color: vars.$color-text-main;
+    @apply text-lg font-bold text-slate-800 leading-tight;
   }
 
   .rating {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: vars.$font-size-sm;
+    @apply flex items-center gap-1 text-sm ml-2 whitespace-nowrap;
 
-    .stars { color: vars.$color-secondary; font-weight: bold; }
-    .count { color: vars.$color-text-light; font-size: vars.$font-size-xs; }
+    .stars { @apply text-yellow-400 font-bold; }
+    .count { @apply text-gray-400 text-xs; }
   }
 }
 
 .description {
-  font-size: vars.$font-size-sm;
-  color: vars.$color-text-light;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin-bottom: vars.$spacing-md;
+  @apply text-sm text-gray-500 line-clamp-2 mb-4;
 }
 
 .card-meta {
-  font-size: vars.$font-size-xs;
-  color: vars.$color-text-light;
-  margin-bottom: vars.$spacing-md;
+  @apply text-xs text-gray-400 mb-4 flex items-center;
 
-  i { margin-right: 4px; }
+  i { @apply mr-1; }
 }
 
 .card-footer {
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #f0f0f0;
-  padding-top: vars.$spacing-md;
+  @apply mt-auto flex justify-between items-center border-t border-gray-100 pt-4;
 
   .price {
-    display: flex;
-    flex-direction: column;
+    @apply flex flex-col;
 
-    .label { font-size: vars.$font-size-xs; color: vars.$color-text-light; }
+    .label { @apply text-xs text-gray-400; }
     .amount {
-      font-size: vars.$font-size-xl;
-      font-weight: vars.$font-weight-bold;
-      color: vars.$color-primary;
+      @apply text-xl font-bold text-cyan-600;
     }
   }
 }

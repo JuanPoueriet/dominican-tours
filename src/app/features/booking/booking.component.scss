@@ -1,155 +1,97 @@
-// CORRECCIÓN: Ruta relativa
-@use '../../../styles/variables/index' as vars;
-@use '../../../styles/mixins/index' as mixins;
+@use '../../../styles/variables' as *;
+
+:host {
+  display: block;
+}
 
 .booking-page {
-  padding: vars.$spacing-3xl 0;
-  min-height: 80vh;
-  display: flex;
-  justify-content: center;
+  @apply py-20 min-h-[80vh] flex justify-center bg-gray-50;
 }
 
 .booking-container {
-  width: 100%;
-  max-width: 800px;
-  background: vars.$color-bg-white;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-  padding: vars.$spacing-2xl;
-
-  @media (max-width: 768px) {
-    padding: vars.$spacing-md;
-  }
+  @apply w-full max-w-3xl bg-white rounded-2xl shadow-2xl p-8 md:p-12;
 }
 
 .steps-indicator {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: vars.$spacing-3xl;
-  position: relative;
-  padding: 0 vars.$spacing-md;
+  @apply flex justify-between items-center mb-12 relative px-4;
 
   .step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 2;
-    position: relative;
+    @apply flex flex-col items-center z-10 relative;
 
     .step-number {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #e0e0e0;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-      margin-bottom: vars.$spacing-xs;
-      transition: all 0.3s ease;
+      @apply w-10 h-10 rounded-full bg-gray-200 text-white flex justify-center items-center font-bold mb-2 transition-all duration-300;
     }
 
     .step-label {
-      font-size: vars.$font-size-xs;
-      color: vars.$color-text-light;
-      font-weight: vars.$font-weight-medium;
+      @apply text-xs text-gray-400 font-medium uppercase tracking-wider;
     }
 
     &.active .step-number {
-      background: vars.$color-primary;
-      box-shadow: 0 0 0 4px rgba(0, 168, 232, 0.2);
+      @apply bg-cyan-500 ring-4 ring-cyan-100;
     }
 
     &.completed .step-number {
-      background: vars.$color-success;
+      @apply bg-green-500;
     }
   }
 
   .line {
-    flex-grow: 1;
-    height: 2px;
-    background: #e0e0e0;
-    margin: 0 vars.$spacing-sm;
-    margin-bottom: 20px; 
-    transition: background 0.3s ease;
+    @apply flex-grow h-0.5 bg-gray-200 mx-2 mb-6 transition-colors duration-300;
 
     &.active {
-      background: vars.$color-success;
+      @apply bg-green-500;
     }
   }
 }
 
 .booking-content {
   h2 {
-    text-align: center;
-    margin-bottom: vars.$spacing-xl;
-    color: vars.$color-primary-dark;
+    @apply text-center mb-8 text-2xl font-bold text-slate-800;
+  }
+}
+
+.form-group {
+  @apply mb-6;
+
+  .form-label {
+    @apply block mb-2 text-sm font-medium text-gray-700;
+  }
+
+  .form-control {
+    @apply block w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all;
   }
 }
 
 .form-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: vars.$spacing-2xl;
-  padding-top: vars.$spacing-lg;
-  border-top: 1px solid #f0f0f0;
+  @apply flex justify-between mt-12 pt-8 border-t border-gray-100;
 
   button:only-child {
-    margin-left: auto;
+    @apply ml-auto;
   }
 }
 
 .summary-card {
-  background: vars.$color-bg-light;
-  padding: vars.$spacing-lg;
-  border-radius: 12px;
-  margin-bottom: vars.$spacing-lg;
+  @apply bg-gray-50 p-6 rounded-xl mb-6 border border-gray-100;
 
   .summary-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: vars.$spacing-sm;
-    border-bottom: 1px dashed #ccc;
-    padding-bottom: vars.$spacing-sm;
+    @apply flex justify-between mb-3 border-b border-dashed border-gray-300 pb-3;
 
-    &:last-child { border-bottom: none; }
+    &:last-child { @apply border-b-0; }
   }
 
   .total-price {
-    margin-top: vars.$spacing-lg;
-    padding-top: vars.$spacing-lg;
-    border-top: 2px solid vars.$color-text-main;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: vars.$font-size-xl;
-    font-weight: bold;
-    color: vars.$color-primary;
+    @apply mt-6 pt-6 border-t-2 border-gray-800 flex justify-between items-center text-2xl font-bold text-cyan-600;
   }
 }
 
 .alert-info {
-  background: rgba(2, 136, 209, 0.1);
-  color: vars.$color-info;
-  padding: vars.$spacing-md;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: vars.$spacing-sm;
+  @apply bg-blue-50 text-blue-700 p-4 rounded-lg flex items-center gap-3 text-sm;
 }
 
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  @apply flex flex-wrap -mx-2;
 }
 
 .col-6 {
-  flex: 0 0 50%;
-  max-width: 50%;
-  padding-right: 15px;
-  padding-left: 15px;
+  @apply w-1/2 px-2;
 }
