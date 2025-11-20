@@ -1,125 +1,83 @@
-// CORRECCIÓN: Ruta relativa (3 niveles)
-@use '../../../styles/variables/index' as vars;
-@use '../../../styles/mixins/index' as mixins;
+// Home Component Styles - using updated SCSS architecture and Tailwind
+@use '../../../styles/variables' as *;
+
+:host {
+  display: block;
+}
 
 .hero {
-  position: relative;
-  height: 85vh;
-  width: 100%;
+  @apply relative w-full h-[85vh];
 
   swiper-container {
-    width: 100%;
-    height: 100%;
+    @apply w-full h-full;
   }
 }
 
 .hero-slide {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  @apply w-full h-full flex items-center justify-center relative;
 
   .hero-bg {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0; left: 0;
-    z-index: -1;
+    @apply w-full h-full object-cover absolute top-0 left-0 -z-10;
   }
 
   &::before {
     content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.3);
-    z-index: 0;
+    @apply absolute inset-0 bg-black/30 z-0;
   }
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  color: vars.$color-text-inverse;
-  text-align: center;
-  max-width: 800px;
-  padding: vars.$spacing-md;
+  @apply relative z-10 text-center max-w-4xl px-4 text-white;
 
   h1 {
-    font-size: 2.5rem;
-    margin-bottom: vars.$spacing-md;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    color: vars.$color-text-inverse;
-
-    @include mixins.respond-to(md) {
-      font-size: 3.5rem;
-    }
+    @apply text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg;
   }
 
   p {
-    font-size: 1.2rem;
-    margin-bottom: vars.$spacing-xl;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    @apply text-lg md:text-2xl mb-8 drop-shadow-md font-light;
   }
 }
 
 .featured {
-  padding: vars.$spacing-3xl 0;
+  @apply py-20 bg-white;
 }
 
 .section-header {
-  text-align: center;
-  margin-bottom: vars.$spacing-2xl;
+  @apply text-center mb-12;
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold mb-2;
+  }
 
   .subtitle {
-    color: vars.$color-text-light;
-    font-size: vars.$font-size-lg;
+    @apply text-gray-500 text-lg;
   }
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: vars.$spacing-lg;
-}
-
-.mt-lg {
-  margin-top: vars.$spacing-xl;
-}
-
-.text-center {
-  text-align: center;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
 }
 
 .benefits {
-  background-color: vars.$color-bg-white;
-  padding: vars.$spacing-3xl 0;
+  @apply py-20 bg-gray-50;
 
   .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: vars.$spacing-xl;
-    text-align: center;
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8 text-center;
   }
 
   .benefit-item {
-    padding: vars.$spacing-lg;
+    @apply p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300;
 
     i {
-      font-size: 3rem;
-      color: vars.$color-secondary;
-      margin-bottom: vars.$spacing-md;
+      @apply text-5xl text-yellow-400 mb-4 inline-block;
     }
 
     h3 {
-      font-size: vars.$font-size-xl;
-      margin-bottom: vars.$spacing-sm;
+      @apply text-xl font-bold mb-2 text-slate-800;
     }
 
     p {
-      color: vars.$color-text-light;
+      @apply text-gray-500;
     }
   }
 }

@@ -1,51 +1,19 @@
-@use 'sass:color'; // Importar el módulo de color de Sass
-@use '../variables/index' as vars;
-
 .btn {
-  display: inline-block;
-  padding: vars.$spacing-sm vars.$spacing-lg;
-  border-radius: 50px;
-  font-weight: vars.$font-weight-medium;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s ease;
-  text-align: center;
+  @apply px-6 py-3 rounded-full font-semibold transition-all duration-300 shadow-md inline-block cursor-pointer;
 
-  &-tropical {
-    background: vars.$gradient-tropical;
-    color: vars.$color-text-inverse;
-    box-shadow: 0 4px 15px rgba(0, 168, 232, 0.3);
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 168, 232, 0.4);
-    }
+  &-primary {
+    @apply bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-lg;
   }
 
   &-secondary {
-    background-color: vars.$color-secondary;
-    color: vars.$color-text-main;
-
-    &:hover {
-      // CORRECCIÓN: Usar color.adjust en lugar de darken()
-      background-color: color.adjust(vars.$color-secondary, $lightness: -10%);
-    }
+    @apply bg-yellow-400 text-slate-900 hover:bg-yellow-500 hover:shadow-lg;
   }
 
   &-outline {
-    background: transparent;
-    border: 2px solid vars.$color-primary;
-    color: vars.$color-primary;
+    @apply border-2 border-white text-white hover:bg-white hover:text-cyan-600;
+  }
+}
 
-    &:hover {
-      background: vars.$color-primary;
-      color: vars.$color-text-inverse;
-    }
-  }
-  
-  // Utility para botones pequeños usada en navbar
-  &-sm {
-    padding: vars.$spacing-xs vars.$spacing-md;
-    font-size: vars.$font-size-sm;
-  }
+.container-custom {
+  @apply container mx-auto px-4 md:px-6;
 }

@@ -1,34 +1,42 @@
-<nav class="navbar" [class.scrolled]="scrolled()">
-  <div class="container navbar-container">
-    <div class="navbar-logo">
-      <a routerLink="/">
-        <!-- Logo placeholder -->
-        <span class="logo-text">PuntaCana<span class="highlight">Tours</span></span>
-      </a>
+<nav [class.scrolled]="scrolled()">
+  <div class="container">
+    <a [routerLink]="['/']" class="logo">
+      PuntaCana<span>Tours</span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="nav-links">
+      <a [routerLink]="['/', currentLang()]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'NAV.HOME' | translate }}</a>
+      <a [routerLink]="['/', currentLang(), 'excursions']" routerLinkActive="active">{{ 'NAV.EXCURSIONS' | translate }}</a>
+      <a [routerLink]="['/', currentLang(), 'about']" routerLinkActive="active">{{ 'NAV.ABOUT' | translate }}</a>
+      <a [routerLink]="['/', currentLang(), 'contact']" routerLinkActive="active">{{ 'NAV.CONTACT' | translate }}</a>
+
+      <div class="flex items-center space-x-2 ml-4 border-l pl-4 border-gray-200">
+        <button (click)="switchLang('es')" [class.text-cyan-600]="currentLang() === 'es'" class="font-bold text-sm hover:text-cyan-500 transition-colors">ES</button>
+        <span class="text-gray-300">|</span>
+        <button (click)="switchLang('en')" [class.text-cyan-600]="currentLang() === 'en'" class="font-bold text-sm hover:text-cyan-500 transition-colors">EN</button>
+      </div>
+
+      <a [routerLink]="['/', currentLang(), 'booking']" class="btn btn-primary btn-sm text-sm py-2 px-4">{{ 'NAV.BOOK_NOW' | translate }}</a>
     </div>
 
-    <div class="navbar-toggle" (click)="toggleMenu()">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </div>
+    <!-- Mobile Toggle -->
+    <button class="mobile-menu-btn" (click)="toggleMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
 
-    <div class="navbar-menu" [class.active]="menuOpen()">
-      <ul class="navbar-links">
-        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'NAV.HOME' | translate }}</a></li>
-        <li><a routerLink="/excursions" routerLinkActive="active">{{ 'NAV.EXCURSIONS' | translate }}</a></li>
-        <li><a routerLink="/about" routerLinkActive="active">{{ 'NAV.ABOUT' | translate }}</a></li>
-        <li><a routerLink="/blog" routerLinkActive="active">{{ 'NAV.BLOG' | translate }}</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active">{{ 'NAV.CONTACT' | translate }}</a></li>
-      </ul>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" [class.open]="menuOpen()">
+      <a [routerLink]="['/', currentLang()]" (click)="toggleMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'NAV.HOME' | translate }}</a>
+      <a [routerLink]="['/', currentLang(), 'excursions']" (click)="toggleMenu()" routerLinkActive="active">{{ 'NAV.EXCURSIONS' | translate }}</a>
+      <a [routerLink]="['/', currentLang(), 'about']" (click)="toggleMenu()" routerLinkActive="active">{{ 'NAV.ABOUT' | translate }}</a>
+      <a [routerLink]="['/', currentLang(), 'contact']" (click)="toggleMenu()" routerLinkActive="active">{{ 'NAV.CONTACT' | translate }}</a>
 
-      <div class="navbar-actions">
-        <div class="lang-switcher">
-          <button class="btn-lang" (click)="switchLang('es')" [class.active]="currentLang() === 'es'">ES</button>
-          <span class="separator">|</span>
-          <button class="btn-lang" (click)="switchLang('en')" [class.active]="currentLang() === 'en'">EN</button>
-        </div>
-        <a routerLink="/excursions" class="btn btn-sm btn-tropical">{{ 'NAV.BOOK_NOW' | translate }}</a>
+      <div class="flex items-center space-x-4 px-4 py-2 border-t border-gray-100 mt-2">
+        <button (click)="switchLang('es')" [class.text-cyan-600]="currentLang() === 'es'" class="font-bold hover:text-cyan-500">ES</button>
+        <button (click)="switchLang('en')" [class.text-cyan-600]="currentLang() === 'en'" class="font-bold hover:text-cyan-500">EN</button>
       </div>
     </div>
   </div>

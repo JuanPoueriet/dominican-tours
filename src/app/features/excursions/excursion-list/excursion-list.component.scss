@@ -1,58 +1,41 @@
-// CORRECCIÓN: Ruta relativa
-@use '../../../../styles/variables/index' as vars;
-@use '../../../../styles/mixins/index' as mixins;
+@use '../../../../styles/variables' as *;
+
+:host {
+  display: block;
+}
 
 .page-header {
-  text-align: center;
-  padding: vars.$spacing-3xl 0;
-  background-color: vars.$color-bg-light;
-  margin-bottom: vars.$spacing-xl;
+  @apply bg-cyan-50 py-16 text-center mb-12;
 
   h1 {
-    color: vars.$color-primary;
-    margin-bottom: vars.$spacing-sm;
+    @apply text-4xl md:text-5xl font-bold text-cyan-700 mb-4;
+  }
+
+  p {
+    @apply text-lg text-cyan-900/70;
   }
 }
 
 .filters {
-  background: vars.$color-bg-white;
-  padding: vars.$spacing-lg;
-  border-radius: 12px;
-  margin-bottom: vars.$spacing-xl;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  display: flex;
-  gap: vars.$spacing-lg;
-  flex-wrap: wrap;
-  align-items: center;
+  @apply bg-white p-6 rounded-xl shadow-sm mb-8 flex flex-wrap gap-4 items-center border border-gray-100;
 
   .filter-group {
-    display: flex;
-    align-items: center;
-    gap: vars.$spacing-sm;
+    @apply flex items-center gap-3;
 
     label {
-      font-weight: vars.$font-weight-medium;
+      @apply font-semibold text-gray-700;
     }
 
     select {
-      padding: vars.$spacing-sm;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      min-width: 150px;
+      @apply py-2 px-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-gray-600 bg-white;
     }
   }
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: vars.$spacing-lg;
-  padding-bottom: vars.$spacing-3xl;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20;
 }
 
 .no-results {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: vars.$spacing-3xl;
-  color: vars.$color-text-light;
+  @apply col-span-full text-center py-20 text-gray-400 text-lg;
 }
