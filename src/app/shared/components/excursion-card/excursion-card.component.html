@@ -1,1 +1,26 @@
-<p>excursion-card.component works!</p>
+<div class="card">
+  <div class="card-image">
+    <img [ngSrc]="excursion().imageUrl" [alt]="excursion().title" fill priority>
+    <div class="badge-category">{{ excursion().category }}</div>
+  </div>
+  <div class="card-content">
+    <div class="card-header">
+      <h3>{{ excursion().title }}</h3>
+      <div class="rating">
+        <span class="stars">★ {{ excursion().rating }}</span>
+        <span class="count">({{ excursion().reviewsCount }})</span>
+      </div>
+    </div>
+    <p class="description">{{ excursion().shortDescription }}</p>
+    <div class="card-meta">
+      <span><i class="far fa-clock"></i> {{ excursion().duration }}</span>
+    </div>
+    <div class="card-footer">
+      <div class="price">
+        <span class="label">{{ 'COMMON.FROM' | translate }}</span>
+        <span class="amount">\${{ excursion().price }}</span>
+      </div>
+      <a [routerLink]="['/excursions', excursion().slug]" class="btn btn-sm btn-outline">{{ 'COMMON.VIEW_DETAILS' | translate }}</a>
+    </div>
+  </div>
+</div>

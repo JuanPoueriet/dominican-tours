@@ -2,14 +2,17 @@ export interface Excursion {
   id: string;
   slug: string;
   title: string;
+  shortDescription: string;
+  fullDescription: string;
   price: number;
-  currency: 'USD' | 'DOP';
   duration: string;
   rating: number;
   reviewsCount: number;
   imageUrl: string;
-  gallery: string[];
-  description: string;
+  galleryImages: string[];
   highlights: string[];
-  category: 'Adventure' | 'Relax' | 'Family' | 'Nightlife';
+  includes: string[];
+  notIncludes: string[];
+  category: 'adventure' | 'family' | 'relaxation' | 'culture';
+  isFeatured: boolean;
 }

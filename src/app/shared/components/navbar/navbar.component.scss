@@ -1,0 +1,197 @@
+@use 'styles/variables/index' as vars;
+@use 'styles/mixins/index' as mixins;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  padding: vars.$spacing-md 0;
+
+  &.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: vars.$spacing-sm 0;
+    backdrop-filter: blur(5px);
+
+    .logo-text { color: vars.$color-text-main; }
+    .navbar-links a { color: vars.$color-text-main; }
+    .bar { background-color: vars.$color-text-main; }
+  }
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-text {
+  font-family: vars.$font-family-display;
+  font-size: 1.5rem;
+  font-weight: vars.$font-weight-bold;
+  color: vars.$color-text-inverse;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+
+  .highlight {
+    color: vars.$color-secondary;
+  }
+}
+
+.navbar-links {
+  display: none;
+
+  @include mixins.respond-to(lg) {
+    display: flex;
+    gap: vars.$spacing-lg;
+
+    a {
+      color: vars.$color-text-inverse;
+      font-weight: vars.$font-weight-medium;
+      font-size: vars.$font-size-sm;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      padding-bottom: 4px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: vars.$color-secondary;
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after, &.active::after {
+        width: 100%;
+      }
+
+      &:hover {
+        color: vars.$color-secondary;
+      }
+    }
+  }
+}
+
+.navbar-actions {
+  display: none;
+
+  @include mixins.respond-to(lg) {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-md;
+  }
+}
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  color: vars.$color-text-inverse;
+
+  .scrolled & {
+    color: vars.$color-text-main;
+  }
+
+  .btn-lang {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: vars.$font-weight-bold;
+    color: inherit;
+    padding: 0 4px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+
+    &:hover, &.active {
+      opacity: 1;
+      color: vars.$color-secondary;
+    }
+  }
+
+  .separator {
+    margin: 0 2px;
+    opacity: 0.5;
+  }
+}
+
+// Mobile Menu
+.navbar-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+
+  @include mixins.respond-to(lg) {
+    display: none;
+  }
+
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: vars.$color-text-inverse;
+    transition: 0.3s;
+  }
+}
+
+.navbar-menu {
+  @include mixins.respond-to(lg) {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-xl;
+  }
+
+  // Mobile styles
+  @media (max-width: 991px) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: vars.$color-bg-white;
+    padding: vars.$spacing-lg;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    flex-direction: column;
+    display: none;
+
+    &.active {
+      display: flex;
+      animation: slideDown 0.3s ease forwards;
+    }
+
+    .navbar-links {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+
+      a {
+        color: vars.$color-text-main;
+        display: block;
+        padding: vars.$spacing-sm;
+      }
+    }
+
+    .navbar-actions {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: vars.$spacing-md;
+
+      .lang-switcher {
+        color: vars.$color-text-main;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

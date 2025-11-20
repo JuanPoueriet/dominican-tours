@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
+import { BookingComponent } from './booking.component';
 
 export const BOOKING_ROUTES: Routes = [
-  {
-    path: '',
-    loadComponent: () => import('./booking-wizard/booking-wizard.component').then(m => m.BookingWizardComponent)
-  }
+  { path: '', component: BookingComponent }
 ];

@@ -9,8 +9,29 @@
     "CTA_BOOK": "Book Now",
     "FEATURED_TITLE": "Popular Excursions"
   },
+  "NAV": {
+    "HOME": "Home",
+    "EXCURSIONS": "Excursions",
+    "ABOUT": "About Us",
+    "BLOG": "Blog",
+    "CONTACT": "Contact",
+    "BOOK_NOW": "Book Now"
+  },
   "DETAIL": {
     "HIGHLIGHTS": "Highlights",
     "BOOK_NOW": "Book Spot"
+  },
+  "BOOKING": {
+    "STEP_1": "Choose date",
+    "STEP_2": "Your Details",
+    "STEP_3": "Secure Payment",
+    "CONFIRM": "Confirm Booking",
+    "NEXT": "Next",
+    "PREV": "Back"
+  },
+  "FOOTER": {
+    "ABOUT": "About Us",
+    "LEGAL": "Legal",
+    "CONTACT": "Contact"
   }
 }

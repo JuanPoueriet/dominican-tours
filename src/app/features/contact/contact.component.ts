@@ -1,39 +1,33 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { ContactService } from '../../core/services/contact.service';
 
 @Component({
-  selector: 'app-contact', // Selector corregido (era app-contact.component)
+  selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, TranslateModule],
+  imports: [ReactiveFormsModule, TranslateModule],
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss'] // Corregido plural 'styleUrls'
+  styleUrl: './contact.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactComponent {
   private fb = inject(FormBuilder);
-  
-  contactForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.email]],
-    subject: ['', Validators.required],
-    message: ['', [Validators.required, Validators.minLength(10)]]
-  });
+  private contactService = inject(ContactService);
 
-  isSubmitting = false;
-  successMessage = '';
+  contactForm = this.fb.group({
+    name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    message: ['', Validators.required]
+  });
 
   onSubmit() {
     if (this.contactForm.valid) {
-      this.isSubmitting = true;
-      // Simulación de envío
-      setTimeout(() => {
-        this.isSubmitting = false;
-        this.successMessage = '¡Gracias! Hemos recibido tu mensaje.';
+      // @ts-ignore
+      this.contactService.sendMessage(this.contactForm.value).subscribe(() => {
+        alert('Mensaje enviado');
         this.contactForm.reset();
-      }, 1500);
-    } else {
-      this.contactForm.markAllAsTouched();
+      });
     }
   }
 }

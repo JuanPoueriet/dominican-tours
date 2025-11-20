@@ -1,0 +1,112 @@
+@use 'styles/variables/index' as vars;
+@use 'styles/mixins/index' as mixins;
+
+.card {
+  background: vars.$color-bg-white;
+  border-radius: 16px;
+  overflow: hidden;
+  @include mixins.card-shadow;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.card-image {
+  position: relative;
+  height: 200px;
+  background-color: #eee;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.badge-category {
+  position: absolute;
+  top: vars.$spacing-sm;
+  right: vars.$spacing-sm;
+  background: rgba(255,255,255,0.9);
+  color: vars.$color-primary;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: vars.$font-size-xs;
+  font-weight: vars.$font-weight-bold;
+  text-transform: uppercase;
+  z-index: 1; // Ensure badge is above image
+}
+
+.card-content {
+  padding: vars.$spacing-lg;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: vars.$spacing-sm;
+
+  h3 {
+    font-size: vars.$font-size-lg;
+    margin-bottom: 0;
+    line-height: 1.3;
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: vars.$font-size-sm;
+
+    .stars { color: vars.$color-secondary; font-weight: bold; }
+    .count { color: vars.$color-text-light; font-size: vars.$font-size-xs; }
+  }
+}
+
+.description {
+  font-size: vars.$font-size-sm;
+  color: vars.$color-text-light;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: vars.$spacing-md;
+}
+
+.card-meta {
+  font-size: vars.$font-size-xs;
+  color: vars.$color-text-light;
+  margin-bottom: vars.$spacing-md;
+
+  i { margin-right: 4px; }
+}
+
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  padding-top: vars.$spacing-md;
+
+  .price {
+    display: flex;
+    flex-direction: column;
+
+    .label { font-size: vars.$font-size-xs; color: vars.$color-text-light; }
+    .amount {
+      font-size: vars.$font-size-xl;
+      font-weight: vars.$font-weight-bold;
+      color: vars.$color-primary;
+    }
+  }
+}

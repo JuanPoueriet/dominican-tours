@@ -1,12 +1,6 @@
 import { Routes } from '@angular/router';
+import { BlogComponent } from './blog.component';
 
 export const BLOG_ROUTES: Routes = [
-  {
-    path: '',
-    loadComponent: () => import('./blog-list/blog-list.component').then(m => m.BlogListComponent)
-  },
-  {
-    path: ':slug',
-    loadComponent: () => import('./blog-detail/blog-detail.component').then(m => m.BlogDetailComponent)
-  }
+  { path: '', component: BlogComponent }
 ];
