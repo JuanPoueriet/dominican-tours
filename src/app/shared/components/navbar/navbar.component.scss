@@ -1,5 +1,6 @@
-@use 'styles/variables/index' as vars;
-@use 'styles/mixins/index' as mixins;
+// CORRECCIÓN: Ruta relativa profunda (4 niveles)
+@use '../../../../styles/variables/index' as vars;
+@use '../../../../styles/mixins/index' as mixins;
 
 .navbar {
   position: fixed;
@@ -20,6 +21,7 @@
     .logo-text { color: vars.$color-text-main; }
     .navbar-links a { color: vars.$color-text-main; }
     .bar { background-color: vars.$color-text-main; }
+    .lang-switcher { color: vars.$color-text-main; }
   }
 }
 
@@ -57,6 +59,7 @@
       letter-spacing: 1px;
       position: relative;
       padding-bottom: 4px;
+      text-decoration: none;
 
       &::after {
         content: '';
@@ -94,10 +97,6 @@
   display: flex;
   align-items: center;
   color: vars.$color-text-inverse;
-
-  .scrolled & {
-    color: vars.$color-text-main;
-  }
 
   .btn-lang {
     background: none;

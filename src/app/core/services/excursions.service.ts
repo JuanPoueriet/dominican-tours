@@ -35,7 +35,7 @@ export class ExcursionsService {
       duration: '4 Horas',
       rating: 4.6,
       reviewsCount: 89,
-      imageUrl: 'assets/images/buggy.jpg',
+      imageUrl: 'assets/images/buggy.webp',
       galleryImages: [],
       highlights: ['Conducción Off-road', 'Playa Macao', 'Cueva Taina', 'Degustación'],
       includes: ['Transporte', 'Casco', 'Guía'],

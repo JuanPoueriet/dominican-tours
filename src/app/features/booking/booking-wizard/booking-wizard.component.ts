@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { BookingService } from '../../../core/services/booking.service';
@@ -93,7 +93,9 @@ export class BookingWizardComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
 
-  step = this.bookingService.bookingSummary;
+  // CORRECCIÓN: Usamos 'computed' para extraer solo el número del paso.
+  // Antes esto devolvía todo el objeto 'BookingState', causando el error de tipos.
+  step = computed(() => this.bookingService.bookingSummary().step);
 
   form = this.fb.group({
     date: ['', Validators.required],
@@ -104,9 +106,8 @@ export class BookingWizardComponent {
   });
 
   nextStep() {
-    const currentStep = this.bookingService.bookingSummary().step;
+    const currentStep = this.step(); // Ahora esto es un número correcto
     
-    // CORRECCIÓN: Conversión de tipos explícita para solucionar TS2322
     const rawDate = this.form.get('date')?.value;
     const date = rawDate ? new Date(rawDate) : null;
     const pax = Number(this.form.get('pax')?.value) || 0;
@@ -119,7 +120,7 @@ export class BookingWizardComponent {
   }
 
   prevStep() {
-    const currentStep = this.bookingService.bookingSummary().step;
+    const currentStep = this.step();
     this.bookingService.updateBooking({ step: currentStep - 1 });
   }
 

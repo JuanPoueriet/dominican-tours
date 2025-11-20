@@ -1,4 +1,5 @@
-@use '../variables' as vars;
+// CORRECCIÓN: Apuntar explícitamente a 'variables/index' para cargar las fuentes correctas
+@use '../variables/index' as vars;
 
 h1, h2, h3, h4, h5, h6 {
   font-family: vars.$font-family-display;
