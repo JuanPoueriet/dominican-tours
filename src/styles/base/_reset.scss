@@ -1,4 +1,5 @@
-@use '../variables' as vars;
+// CORRECCIÓN: Apuntar a 'variables/index' explícitamente
+@use '../variables/index' as vars;
 
 * {
   box-sizing: border-box;

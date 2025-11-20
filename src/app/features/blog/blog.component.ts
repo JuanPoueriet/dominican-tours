@@ -14,7 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
     </div>
   `,
   styles: [`
-    @use 'styles/variables/index' as vars;
+    @use '../../../styles/variables/index' as vars;
     .page-header { padding: 3rem 0; text-align: center; }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush

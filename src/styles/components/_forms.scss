@@ -1,4 +1,5 @@
-@use '../variables' as vars;
+// CORRECCIÓN: Apuntar explícitamente a 'variables/index'
+@use '../variables/index' as vars;
 
 .form-group {
   margin-bottom: vars.$spacing-md;

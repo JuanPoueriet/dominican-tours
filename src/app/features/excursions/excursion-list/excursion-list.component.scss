@@ -1,5 +1,6 @@
-@use 'styles/variables/index' as vars;
-@use 'styles/mixins/index' as mixins;
+// CORRECCIÓN: Ruta relativa
+@use '../../../../styles/variables/index' as vars;
+@use '../../../../styles/mixins/index' as mixins;
 
 .page-header {
   text-align: center;
