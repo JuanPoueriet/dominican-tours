@@ -1,0 +1,52 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet, RouterLink } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
+@Component({
+  selector: 'app-main-layout',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterLink, TranslateModule],
+  template: `
+    <nav class="navbar">
+      <div class="container nav-content">
+        <a routerLink="/" class="logo">🌴 PuntaCanaTrips</a>
+        <div class="links">
+          <a routerLink="/" routerLinkActive="active">Inicio</a>
+          <a routerLink="/excursiones" routerLinkActive="active">Excursiones</a>
+          <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
+        </div>
+        <div class="lang-switcher">
+          <button (click)="switchLang('es')">ES</button> | 
+          <button (click)="switchLang('en')">EN</button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Punta Cana Trips. All rights reserved.</p>
+      </div>
+    </footer>
+  `,
+  styles: [`
+    .navbar { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+    .nav-content { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: bold; font-size: 1.5rem; color: #008080; text-decoration: none; }
+    .links a { margin-left: 1.5rem; text-decoration: none; color: #2C3E50; font-weight: 500; }
+    .links a.active { color: #008080; }
+    .footer { background: #2C3E50; color: white; padding: 2rem 0; margin-top: 3rem; text-align: center; }
+    .lang-switcher button { background: none; border: none; cursor: pointer; font-weight: bold; color: #2C3E50; }
+  `]
+})
+export class MainLayoutComponent {
+  constructor(private translate: TranslateService) {}
+
+  switchLang(lang: string) {
+    this.translate.use(lang);
+  }
+}

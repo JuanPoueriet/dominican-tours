@@ -1,0 +1,16 @@
+{
+  "COMMON": {
+    "VIEW_DETAILS": "View Details",
+    "FROM": "From"
+  },
+  "HOME": {
+    "HERO_TITLE": "Discover Punta Cana",
+    "HERO_SUBTITLE": "The best Caribbean experiences await you.",
+    "CTA_BOOK": "Book Now",
+    "FEATURED_TITLE": "Popular Excursions"
+  },
+  "DETAIL": {
+    "HIGHLIGHTS": "Highlights",
+    "BOOK_NOW": "Book Spot"
+  }
+}

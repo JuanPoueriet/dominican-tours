@@ -1,0 +1,33 @@
+{
+  "COMMON": {
+    "VIEW_DETAILS": "Ver Detalles",
+    "FROM": "Desde"
+  },
+  "HOME": {
+    "HERO_TITLE": "Descubre Punta Cana",
+    "HERO_SUBTITLE": "Las mejores experiencias en el Caribe te esperan.",
+    "CTA_BOOK": "Reserva Ahora",
+    "FEATURED_TITLE": "Excursiones Populares"
+  },
+  "DETAIL": {
+    "HIGHLIGHTS": "Lo más destacado",
+    "BOOK_NOW": "Reservar Lugar"
+  },
+  "BOOKING": {
+    "STEP_1": "Elige tu fecha",
+    "STEP_2": "Tus datos",
+    "STEP_3": "Pago seguro",
+    "CONFIRM": "Confirmar Reserva",
+    "NEXT": "Siguiente",
+    "PREV": "Atrás"
+  },
+  "BLOG": {
+    "TITLE": "Diario de Viaje",
+    "READ_MORE": "Leer artículo"
+  },
+  "FOOTER": {
+    "ABOUT": "Sobre Nosotros",
+    "LEGAL": "Términos y Condiciones",
+    "CONTACT": "Contacto"
+  }
+}
