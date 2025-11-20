@@ -1,0 +1,82 @@
+@if (excursion()) {
+  <div class="excursion-detail">
+    <!-- Gallery Header -->
+    <div class="gallery-header">
+      <swiper-container navigation="true" pagination="true" loop="true" class="main-slider">
+        <swiper-slide>
+          <img [ngSrc]="excursion()!.imageUrl" [alt]="excursion()!.title" fill priority>
+        </swiper-slide>
+        @for (img of excursion()!.galleryImages; track img) {
+          <swiper-slide>
+            <img [src]="img" [alt]="excursion()!.title" loading="lazy">
+          </swiper-slide>
+        }
+      </swiper-container>
+    </div>
+
+    <div class="container content-grid">
+      <div class="main-info">
+        <div class="header">
+          <span class="badge">{{ excursion()!.category }}</span>
+          <h1>{{ excursion()!.title }}</h1>
+          <div class="meta">
+            <span><i class="far fa-clock"></i> {{ excursion()!.duration }}</span>
+            <span><i class="fas fa-star"></i> {{ excursion()!.rating }} ({{ excursion()!.reviewsCount }} reviews)</span>
+          </div>
+        </div>
+
+        <div class="description">
+          <h2>Sobre esta actividad</h2>
+          <p>{{ excursion()!.fullDescription }}</p>
+        </div>
+
+        <div class="highlights">
+          <h3>{{ 'DETAIL.HIGHLIGHTS' | translate }}</h3>
+          <ul>
+            @for (item of excursion()!.highlights; track item) {
+              <li><i class="fas fa-check"></i> {{ item }}</li>
+            }
+          </ul>
+        </div>
+
+        <div class="lists-grid">
+          <div class="includes">
+            <h4>Incluye</h4>
+            <ul>
+              @for (item of excursion()!.includes; track item) {
+                <li><i class="fas fa-check-circle text-success"></i> {{ item }}</li>
+              }
+            </ul>
+          </div>
+          <div class="not-includes">
+            <h4>No Incluye</h4>
+            <ul>
+              @for (item of excursion()!.notIncludes; track item) {
+                <li><i class="fas fa-times-circle text-danger"></i> {{ item }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="booking-card sticky">
+          <div class="price-tag">
+            <span class="label">Precio por persona</span>
+            <span class="amount">\${{ excursion()!.price }}</span>
+          </div>
+
+          <button class="btn btn-tropical btn-block" (click)="bookNow()">
+            {{ 'DETAIL.BOOK_NOW' | translate }}
+          </button>
+
+          <div class="secure-note">
+            <i class="fas fa-lock"></i> Reserva segura y confirmación inmediata
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+} @else {
+  <app-loader></app-loader>
+}

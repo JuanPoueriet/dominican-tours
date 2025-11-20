@@ -9,6 +9,14 @@
     "CTA_BOOK": "Reserva Ahora",
     "FEATURED_TITLE": "Excursiones Populares"
   },
+  "NAV": {
+    "HOME": "Inicio",
+    "EXCURSIONS": "Excursiones",
+    "ABOUT": "Nosotros",
+    "BLOG": "Blog",
+    "CONTACT": "Contacto",
+    "BOOK_NOW": "Reservar"
+  },
   "DETAIL": {
     "HIGHLIGHTS": "Lo más destacado",
     "BOOK_NOW": "Reservar Lugar"
