@@ -1,153 +1,108 @@
-// CORRECCIÓN: Ruta relativa profunda
-@use '../../../../styles/variables/index' as vars;
-@use '../../../../styles/mixins/index' as mixins;
+@use '../../../../styles/variables' as *;
+
+:host {
+  display: block;
+}
 
 .excursion-detail {
-  padding-bottom: vars.$spacing-3xl;
+  @apply pb-20;
 }
 
 .gallery-header {
-  height: 50vh;
-  width: 100%;
-  background-color: #eee;
+  @apply h-[50vh] w-full bg-gray-200;
 
   swiper-container {
-    width: 100%;
-    height: 100%;
+    @apply w-full h-full;
   }
 
   img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    @apply w-full h-full object-cover;
   }
 }
 
 .content-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: vars.$spacing-xl;
-  margin-top: -#{vars.$spacing-3xl};
-  position: relative;
-  z-index: 10;
-
-  @include mixins.respond-to(lg) {
-    grid-template-columns: 2fr 1fr;
-  }
+  @apply grid grid-cols-1 lg:grid-cols-3 gap-8 -mt-20 relative z-10 px-4 container mx-auto;
 }
 
 .main-info {
-  background: vars.$color-bg-white;
-  padding: vars.$spacing-xl;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  @apply lg:col-span-2 bg-white p-8 rounded-2xl shadow-lg;
 
   .header {
-    margin-bottom: vars.$spacing-xl;
-    border-bottom: 1px solid #eee;
-    padding-bottom: vars.$spacing-lg;
+    @apply mb-8 border-b border-gray-100 pb-6;
 
     .badge {
-      background: vars.$color-secondary;
-      color: vars.$color-text-main;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: vars.$font-size-sm;
-      text-transform: uppercase;
-      font-weight: bold;
-      display: inline-block;
-      margin-bottom: vars.$spacing-sm;
+      @apply bg-yellow-400 text-slate-900 px-3 py-1 rounded-full text-xs font-bold uppercase inline-block mb-4;
     }
 
-    h1 { margin-bottom: vars.$spacing-sm; }
+    h1 {
+      @apply text-3xl md:text-4xl mb-4 font-bold text-slate-900;
+    }
 
     .meta {
-      display: flex;
-      gap: vars.$spacing-lg;
-      color: vars.$color-text-light;
+      @apply flex flex-wrap gap-6 text-gray-500;
 
-      i { color: vars.$color-primary; }
+      i { @apply text-cyan-500 mr-2; }
     }
   }
 
   .description {
-    margin-bottom: vars.$spacing-xl;
+    @apply mb-8 text-gray-600 leading-relaxed;
+
+    h2 { @apply text-2xl font-bold mb-4 text-slate-800; }
   }
 
   .highlights {
-    background: vars.$color-bg-light;
-    padding: vars.$spacing-lg;
-    border-radius: 8px;
-    margin-bottom: vars.$spacing-xl;
+    @apply bg-cyan-50 p-6 rounded-xl mb-8;
+
+    h3 { @apply text-xl font-bold mb-4 text-cyan-800; }
 
     ul {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: vars.$spacing-md;
+      @apply grid grid-cols-1 md:grid-cols-2 gap-4;
 
       li {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        i { color: vars.$color-success; }
+        @apply flex items-center gap-3 text-gray-700;
+        i { @apply text-cyan-600; }
       }
     }
   }
 
   .lists-grid {
-    display: grid;
-    gap: vars.$spacing-lg;
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
 
-    @include mixins.respond-to(md) {
-      grid-template-columns: 1fr 1fr;
-    }
+    h4 { @apply text-lg font-bold mb-4 text-slate-800; }
 
     ul li {
-      margin-bottom: vars.$spacing-sm;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      @apply mb-2 flex items-center gap-3 text-gray-600;
 
-      .text-success { color: vars.$color-success; }
-      .text-danger { color: vars.$color-danger; }
+      .text-success { @apply text-green-500; }
+      .text-danger { @apply text-red-500; }
     }
   }
 }
 
 .sidebar {
+  @apply lg:col-span-1;
+
   .booking-card {
-    background: vars.$color-bg-white;
-    padding: vars.$spacing-xl;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    @apply bg-white p-8 rounded-2xl shadow-xl border border-gray-100;
 
     &.sticky {
-      position: sticky;
-      top: 100px;
+      @apply sticky top-24;
     }
 
     .price-tag {
-      text-align: center;
-      margin-bottom: vars.$spacing-lg;
+      @apply text-center mb-6;
 
-      .label { display: block; color: vars.$color-text-light; margin-bottom: 4px; }
-      .amount { font-size: 2.5rem; font-weight: bold; color: vars.$color-primary; }
+      .label { @apply block text-gray-400 text-sm mb-1; }
+      .amount { @apply text-4xl font-bold text-cyan-600; }
     }
 
     .btn-block {
-      width: 100%;
-      display: block;
-      margin-bottom: vars.$spacing-md;
+      @apply w-full block mb-4 py-3 text-center;
     }
 
     .secure-note {
-      text-align: center;
-      font-size: vars.$font-size-sm;
-      color: vars.$color-text-light;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
+      @apply text-center text-sm text-gray-400 flex justify-center items-center gap-2;
     }
   }
 }
