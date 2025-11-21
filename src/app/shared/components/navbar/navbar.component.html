@@ -1,8 +1,7 @@
 <nav class="navbar" [class.scrolled]="scrolled()">
   <div class="container navbar-container">
     <div class="navbar-logo">
-      <a routerLink="/">
-        <!-- Logo placeholder -->
+      <a [routerLink]="['/', currentLang()]">
         <span class="logo-text">PuntaCana<span class="highlight">Tours</span></span>
       </a>
     </div>
@@ -15,11 +14,31 @@
 
     <div class="navbar-menu" [class.active]="menuOpen()">
       <ul class="navbar-links">
-        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'NAV.HOME' | translate }}</a></li>
-        <li><a routerLink="/excursions" routerLinkActive="active">{{ 'NAV.EXCURSIONS' | translate }}</a></li>
-        <li><a routerLink="/about" routerLinkActive="active">{{ 'NAV.ABOUT' | translate }}</a></li>
-        <li><a routerLink="/blog" routerLinkActive="active">{{ 'NAV.BLOG' | translate }}</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active">{{ 'NAV.CONTACT' | translate }}</a></li>
+        <li>
+          <a [routerLink]="['/', currentLang()]" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            {{ 'NAV.HOME' | translate }}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/', currentLang(), 'excursions']" routerLinkActive="active">
+            {{ 'NAV.EXCURSIONS' | translate }}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/', currentLang(), 'about']" routerLinkActive="active">
+            {{ 'NAV.ABOUT' | translate }}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/', currentLang(), 'blog']" routerLinkActive="active">
+            {{ 'NAV.BLOG' | translate }}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/', currentLang(), 'contact']" routerLinkActive="active">
+            {{ 'NAV.CONTACT' | translate }}
+          </a>
+        </li>
       </ul>
 
       <div class="navbar-actions">
@@ -28,7 +47,9 @@
           <span class="separator">|</span>
           <button class="btn-lang" (click)="switchLang('en')" [class.active]="currentLang() === 'en'">EN</button>
         </div>
-        <a routerLink="/excursions" class="btn btn-sm btn-tropical">{{ 'NAV.BOOK_NOW' | translate }}</a>
+        <a [routerLink]="['/', currentLang(), 'excursions']" class="btn btn-sm btn-tropical">
+          {{ 'NAV.BOOK_NOW' | translate }}
+        </a>
       </div>
     </div>
   </div>
